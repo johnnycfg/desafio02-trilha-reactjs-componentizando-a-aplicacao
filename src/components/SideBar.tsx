@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import '../styles/sidebar.scss';
 import { Button } from "./Button";
 
@@ -14,7 +15,7 @@ interface SideBarProps {
 }
 
 
-export function SideBar(props: SideBarProps) {
+export function SideBarComponent(props: SideBarProps) {
   return (
     <nav className="sidebar">
       <span>Watch<p>Me</p></span>
@@ -33,3 +34,7 @@ export function SideBar(props: SideBarProps) {
     </nav>
   );
 }
+
+export const SideBar = memo(SideBarComponent, (prevProps, nextProps) => {
+  return Object.is(prevProps, nextProps)
+})
